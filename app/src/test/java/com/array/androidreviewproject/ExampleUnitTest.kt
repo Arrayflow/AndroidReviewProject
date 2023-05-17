@@ -1,4 +1,4 @@
-package com.example.androidreviewproject
+package com.array.androidreviewproject
 
 import org.junit.Test
 
