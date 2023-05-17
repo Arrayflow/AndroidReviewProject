@@ -38,7 +38,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
         })
         viewModel.userName.observe(this) {
-            TODO("观察到userName变化后的操作")
+//            TODO("观察到userName变化后的操作")
         }
 
         binding.addBtn.setOnClickListener {
@@ -46,7 +46,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
         viewModel.user.observe(this) { user ->
-            TODO("$user 观察到变化之后的操作")
+            binding.numTV.text = user.userName
         }
 
         lifecycle.addObserver(MainActivityObserver(lifecycle))
