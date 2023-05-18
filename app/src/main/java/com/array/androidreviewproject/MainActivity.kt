@@ -11,6 +11,7 @@ import com.array.androidreviewproject.databinding.ActivityMainBinding
 import com.array.androidreviewproject.ui.MainViewModel
 import com.array.androidreviewproject.ui.MainViewModelFactory
 import com.array.androidreviewproject.util.MainActivityObserver
+import com.array.androidreviewproject.util.go2Activity
 
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -28,8 +29,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         /**
          * LiveData的使用
          */
-        viewModel.counter.observe(this) { counter ->
-            binding.numTV.text = counter.toString()
+        viewModel.counter.observe(this) { count ->
+            binding.numTV.text = count.toString()
         }
         //上述Lambda表达式实际的形式
         viewModel.counter.observe(this, object : Observer<Int> {
@@ -47,6 +48,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         viewModel.user.observe(this) { user ->
             binding.numTV.text = user.userName
+        }
+
+        binding.toDatabase.setOnClickListener {
+            go2Activity<DataBaseActivity>(this)
         }
 
         lifecycle.addObserver(MainActivityObserver(lifecycle))

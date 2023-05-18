@@ -35,10 +35,6 @@ class MainViewModel(counterReserved: Int) : ViewModel() {
     val userName: LiveData<String> = Transformations.map(userLiveData) { user ->
         user.userName
     }
-    //Activity中观察这个ViewModel
-//    viewModel.userName.observe(this) { userName ->
-//        TODO("观察到userName变化后的操作")
-//    }
 
     //switchMap()函数：
     //定义一个可变的LiveData，接收getUser(userId)传进来的参数，并setValue给这个LiveData
@@ -52,12 +48,5 @@ class MainViewModel(counterReserved: Int) : ViewModel() {
     fun getUser(userId: String) {
         userIdLiveData.value = userId
     }
-//    binding.addBtn.setOnClickListener {
-//        viewModel.getUser("Tim")
-//    }
-//
-//    viewModel.user.observe(this) { user ->
-//        TODO("$user 观察到变化之后的操作")
-//    }
 
 }

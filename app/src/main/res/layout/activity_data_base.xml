@@ -4,39 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.array.androidreviewproject.MainActivity">
+    tools:context=".DataBaseActivity">
 
     <TextView
-        android:id="@+id/numTV"
+        android:id="@+id/userInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/black"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/addBtn"
+        app:layout_constraintBottom_toTopOf="@+id/addUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/addBtn"
+        android:id="@+id/addUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
+        android:text="Add UserInfo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/to_database"
+        android:id="@+id/deleteUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="To Database"
+        android:text="Delete UserInfo"
+        app:layout_constraintBottom_toTopOf="@+id/showUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addUser" />
+
+    <Button
+        android:id="@+id/showUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show UserInfo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/addUser" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

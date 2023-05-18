@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -12,6 +13,12 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -44,4 +51,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    //添加Room依赖
+    implementation 'androidx.room:room-runtime:2.1.0'
+    //kapt引入Room的编译时注解库，java使用annotationProcessor{}
+    kapt 'androidx.room:room-compiler:2.1.0'
 }
