@@ -54,6 +54,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             go2Activity<DataBaseActivity>(this)
         }
 
+        binding.toWorkmgr.setOnClickListener {
+
+        }
+
         lifecycle.addObserver(MainActivityObserver(lifecycle))
     }
 

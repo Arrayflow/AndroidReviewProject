@@ -1,3 +1,3 @@
 package com.array.androidreviewproject.bean
 
-data class User(val userName: String, val userAge: Int)
+data class User(var userName: String, var userAge: Int)

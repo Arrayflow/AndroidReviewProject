@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 //实体类添加注解
 @Entity
-data class UserInfo(val firstName: String, val lastName: String, val age: Int) {
+data class UserInfo(var firstName: String, var lastName: String, var age: Int) {
 
     //添加主键id选项
     @PrimaryKey( autoGenerate = true)
