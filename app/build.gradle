@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -56,4 +57,11 @@ dependencies {
     //kapt引入Room的编译时注解库，java使用annotationProcessor{}
     kapt 'androidx.room:room-compiler:2.1.0'
     implementation 'androidx.work:work-runtime:2.2.0'
+
+    implementation "com.google.dagger:hilt-android:2.28-alpha"
+    kapt "com.google.dagger:hilt-compiler:2.44-alpha"
+}
+
+kapt {
+    correctErrorTypes true
 }
