@@ -4,12 +4,11 @@ import com.array.androidreviewproject.hilt.bean.Student
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
-import java.util.Objects
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 //由Hilt提供的ApplicationComponent标准容器组件，表示这个Module和AppComponent建立了关联
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 @Module //Module注入
 class AppModule {
 

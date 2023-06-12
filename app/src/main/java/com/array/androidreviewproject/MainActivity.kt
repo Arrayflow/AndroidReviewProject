@@ -50,6 +50,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             binding.numTV.text = user.userName
         }
 
+        binding.toRecyclerview.setOnClickListener {
+            go2Activity<RecyclerViewActivity>(this)
+        }
+
         binding.toDatabase.setOnClickListener {
             go2Activity<DataBaseActivity>(this)
         }
@@ -71,4 +75,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
         }
     }
+
 }
