@@ -7,6 +7,8 @@ import androidx.core.content.edit
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.array.androidreviewproject.base.BaseActivity
+import com.array.androidreviewproject.customview.CustomImageView
+import com.array.androidreviewproject.customview.CustomViewActivity
 import com.array.androidreviewproject.databinding.ActivityMainBinding
 import com.array.androidreviewproject.ui.MainViewModel
 import com.array.androidreviewproject.ui.MainViewModelFactory
@@ -61,6 +63,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.toWorkmgr.setOnClickListener {
 
         }
+
+        binding.toCustomview.setOnClickListener {
+            go2Activity<CustomViewActivity>(this)
+        }
+
+
 
         lifecycle.addObserver(MainActivityObserver(lifecycle))
     }
