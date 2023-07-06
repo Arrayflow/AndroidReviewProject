@@ -1,11 +1,9 @@
 package com.array.androidreviewproject.customview
 
-import android.animation.Animator
-import android.animation.IntEvaluator
+import android.animation.TypeEvaluator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.animation.addListener
@@ -19,7 +17,9 @@ class CustomImageView : AppCompatImageView {
 
     private var mImgCount = 4
 
-    private var customViewRepeatListener: CustomViewRepeatListener? = null
+    private var customViewRepeatListener: CustomAnimationRepeatListener? = null
+
+    var mValueAnimator: ValueAnimator
 
     constructor(context: Context) : super(context)
 
@@ -32,18 +32,18 @@ class CustomImageView : AppCompatImageView {
     )
 
     init {
-        val valueAnimator = ValueAnimator.ofInt(0, 100, 0)
-        valueAnimator.repeatMode = ValueAnimator.RESTART
-        valueAnimator.repeatCount = ValueAnimator.INFINITE
-        valueAnimator.duration = 1000
-        valueAnimator.interpolator = AccelerateDecelerateInterpolator()
+        mValueAnimator = ValueAnimator.ofInt(0, 100, 0)
+        mValueAnimator.repeatMode = ValueAnimator.RESTART
+        mValueAnimator.repeatCount = ValueAnimator.INFINITE
+        mValueAnimator.duration = 1000
+        mValueAnimator.interpolator = AccelerateDecelerateInterpolator()
 
-        valueAnimator.addUpdateListener { animation ->
+        mValueAnimator.addUpdateListener { animation ->
             val dx = animation.animatedValue as Int
             top = mTop - dx
         }
 
-        valueAnimator.addListener(onStart = { setImageDrawable(resources.getDrawable(R.mipmap.lion)) },
+        mValueAnimator.addListener(onStart = { setImageDrawable(resources.getDrawable(R.mipmap.lion)) },
             onCancel = {}, onEnd = {}
         ) {
             customViewRepeatListener?.onRepeatFinish()
@@ -82,7 +82,7 @@ class CustomImageView : AppCompatImageView {
 //            }
 //        })
 
-    valueAnimator.start()
+    mValueAnimator.start()
 }
 
 override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
@@ -90,10 +90,15 @@ override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom:
     mTop = top
 }
 
-fun setOnCustomViewRepeatListener(listener: CustomViewRepeatListener) {
+fun setOnCustomRepeatListener(listener: CustomAnimationRepeatListener) {
     customViewRepeatListener = listener
 }
 
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        mValueAnimator.removeAllListeners()
+        mValueAnimator.removeAllUpdateListeners()
+    }
 }
 
 interface CustomViewRepeatListener {
